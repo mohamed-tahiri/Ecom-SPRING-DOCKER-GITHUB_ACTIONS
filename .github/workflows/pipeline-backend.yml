@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup JDK
-        uses: actions/setup-jdk@v4
+        uses: actions/setup-jdk@v3
         with:
           java-version: 17
           distribution: 'corretto'
@@ -34,7 +34,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup JDK
-        uses: actions/setup-jdk@v4
+        uses: actions/setup-jdk@v3
         with:
           java-version: 17
           distribution: 'corretto'
@@ -53,7 +53,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup JDK
-        uses: actions/setup-jdk@v4
+        uses: actions/setup-jdk@v3
         with:
           java-version: 17
           distribution: 'corretto'
@@ -74,7 +74,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup JDK
-        uses: actions/setup-jdk@v4
+        uses: actions/setup-jdk@v3
         with:
           java-version: 17
           distribution: 'corretto'
