@@ -148,7 +148,7 @@ jobs:
           push: true
           platforms: linux/amd64
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/ecom:${{ steps.extract_version.outputs.VERSION }},${{ secrets.DOCKER_USERNAME }}/ecom:latest
+            ${{ secrets.DOCKER_USERNAME }}/ecom:1.0.0,${{ secrets.DOCKER_USERNAME }}/ecom:latest
           build-args: |
             PROFILE=dev
             APP_VERSION=${{ steps.extract_version.outputs.VERSION }}
