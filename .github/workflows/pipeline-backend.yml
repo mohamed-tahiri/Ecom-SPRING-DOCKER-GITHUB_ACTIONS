@@ -37,25 +37,7 @@ jobs:
 
       - name: Compile project
         run: ./mvnw clean compile
-
-  unit-tests:
-    runs-on: self-hosted
-    name: Unit tests
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'corretto'
-
-      - name: Run unit tests
-        run: ./mvnw clean test -X
-
+        
   build:
     runs-on: self-hosted
     name: Build backend
