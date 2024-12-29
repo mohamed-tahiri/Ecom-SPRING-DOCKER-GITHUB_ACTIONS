@@ -24,9 +24,22 @@ jobs:
       - name: Compile project
         run: ./mvnw clean compile
 
+  setup-docker-compose:
+    runs-on: self-hosted
+    name: Setup and Run Docker Compose
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Start Docker Compose
+        run: docker-compose up -d
+
   unit-tests:
     runs-on: self-hosted
     name: Unit tests
+    needs: [setup-docker-compose]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -59,9 +72,7 @@ jobs:
           distribution: 'corretto'
 
       - name: Build project
-        run: |
-          cd book-network
-          ./mvnw clean package
+        run: ./mvnw clean package
 
   build-image:
     runs-on: self-hosted
