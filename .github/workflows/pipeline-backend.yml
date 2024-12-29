@@ -54,7 +54,7 @@ jobs:
           distribution: 'corretto'
 
       - name: Run unit tests
-        run: ./mvnw clean test
+        run: ./mvnw clean test -X
 
   build:
     runs-on: self-hosted
