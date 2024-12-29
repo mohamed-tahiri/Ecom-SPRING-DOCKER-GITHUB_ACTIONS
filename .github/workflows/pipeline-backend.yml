@@ -38,6 +38,3 @@ jobs:
           file: Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/ecom:1.0.0,${{ secrets.DOCKER_USERNAME }}/ecom:latest
-          build-args: |
-            PROFILE=dev
-            APP_VERSION=0.0.1-SNAPSHOT

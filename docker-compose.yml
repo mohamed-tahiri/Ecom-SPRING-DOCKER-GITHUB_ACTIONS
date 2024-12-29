@@ -27,7 +27,6 @@ services:
       - spring-ecom
     depends_on:
       - postgres
-    restart: unless-stopped
 
 networks:
   spring-ecom:
