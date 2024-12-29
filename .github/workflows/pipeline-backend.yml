@@ -18,8 +18,6 @@ jobs:
           sudo systemctl enable docker
           docker --version
           sudo usermod -aG docker $USER
-      - name: Restart Docker service to apply changes
-        run: sudo systemctl restart docker
 
   compile:
     runs-on: self-hosted
@@ -54,13 +52,17 @@ jobs:
         run: |
           sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
           sudo chmod +x /usr/local/bin/docker-compose
+          # Remove existing symbolic link if it exists
+          if [ -f /usr/bin/docker-compose ]; then
+            sudo rm /usr/bin/docker-compose
+          fi
           sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
           docker-compose --version
 
       - name: Start Docker Compose
         run: |
-          cd $GITHUB_WORKSPACE
-          sudo docker-compose up -d
+          cd /home/ubuntu/actions-runner/_work/Ecom-SPRING-DOCKER-GITHUB_ACTIONS/Ecom-SPRING-DOCKER-GITHUB_ACTIONS
+          docker-compose up -d
 
   unit-tests:
     runs-on: self-hosted
