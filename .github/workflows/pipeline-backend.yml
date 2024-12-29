@@ -18,6 +18,8 @@ jobs:
           sudo systemctl enable docker
           docker --version
           sudo usermod -aG docker $USER
+      - name: Restart Docker service to apply changes
+        run: sudo systemctl restart docker
 
   compile:
     runs-on: self-hosted
@@ -57,8 +59,8 @@ jobs:
 
       - name: Start Docker Compose
         run: |
-          cd /home/ubuntu/actions-runner/_work/Ecom-SPRING-DOCKER-GITHUB_ACTIONS/Ecom-SPRING-DOCKER-GITHUB_ACTIONS
-          docker-compose up -d
+          cd $GITHUB_WORKSPACE
+          sudo docker-compose up -d
 
   unit-tests:
     runs-on: self-hosted
