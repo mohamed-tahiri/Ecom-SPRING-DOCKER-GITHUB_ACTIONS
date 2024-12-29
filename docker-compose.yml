@@ -16,7 +16,7 @@ services:
     restart: unless-stopped
   ecom-api:
     container_name: ecom-api
-    image: ecom/ecom:1.0.0
+    image:  medtahiri01/ecom:latest
     ports:
       - 8088:8088
     networks:
