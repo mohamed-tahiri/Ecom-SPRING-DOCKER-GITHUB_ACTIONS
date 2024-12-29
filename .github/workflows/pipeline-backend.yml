@@ -37,7 +37,6 @@ jobs:
           context: .  # The directory where your Dockerfile and source code reside
           file: Dockerfile
           push: true
-          platforms: linux/amd64
           tags: ${{ secrets.DOCKER_USERNAME }}/ecom:1.0.0,${{ secrets.DOCKER_USERNAME }}/ecom:latest
           build-args: |
             PROFILE=dev

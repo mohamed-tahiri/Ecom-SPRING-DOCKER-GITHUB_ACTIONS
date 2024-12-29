@@ -5,7 +5,6 @@ services:
     environment:
       POSTGRES_USER: username
       POSTGRES_PASSWORD: password
-      PGDATA: /var/lib/postgresql/data
       POSTGRES_DB: ecom
     volumes:
       - postgres:/data/postgres
@@ -14,15 +13,22 @@ services:
     networks:
       - spring-ecom
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "username"]
+      interval: 30s
+      retries: 5
+
   ecom-api:
     container_name: ecom-api
-    image:  medtahiri01/ecom:latest
+    image: medtahiri01/ecom:latest
     ports:
       - 8088:8088
     networks:
       - spring-ecom
     depends_on:
       - postgres
+    restart: unless-stopped
+
 networks:
   spring-ecom:
     driver: bridge
