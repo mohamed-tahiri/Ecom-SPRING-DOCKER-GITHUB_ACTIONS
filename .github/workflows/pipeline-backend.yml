@@ -49,7 +49,7 @@ jobs:
 
       - name: Start Docker Compose
         run: |
-          cd _work/Ecom-SPRING-DOCKER-GITHUB_ACTIONS/Ecom-SPRING-DOCKER-GITHUB_ACTIONS
+          cd /home/ubuntu/actions-runner/_work/Ecom-SPRING-DOCKER-GITHUB_ACTIONS/Ecom-SPRING-DOCKER-GITHUB_ACTIONS
           docker-compose up -d
 
   unit-tests:
