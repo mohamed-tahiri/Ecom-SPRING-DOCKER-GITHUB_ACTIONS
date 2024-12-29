@@ -14,15 +14,15 @@ services:
     networks:
       - spring-ecom
     restart: unless-stopped
-  ecom-api:
-    container_name: ecom-api
-    image: ecom/ecom:1.0.0
-    ports:
-      - 8088:8088
-    networks:
-      - spring-ecom
-    depends_on:
-      - postgres
+  #ecom-api:
+  #  container_name: ecom-api
+  #  image: ecom/ecom:1.0.0
+  #  ports:
+  #    - 8088:8088
+  #  networks:
+  #    - spring-ecom
+  #  depends_on:
+  #    - postgres
 networks:
   spring-ecom:
     driver: bridge
