@@ -18,15 +18,24 @@ services:
       interval: 30s
       retries: 5
 
-  ecom-api:
-    container_name: ecom-api
-    image: medtahiri01/ecom:latest
+  #ecom-api:
+  #  container_name: ecom-api
+  #  image: medtahiri01/ecom:latest
+  #  ports:
+  #    - 8088:8088
+  #  networks:
+  #    - spring-ecom
+  #  depends_on:
+  #    - postgres
+  #  environment:
+  #    - DB_URL=jdbc:postgresql://postgres:5432/ecom
+
+  mail-dev:
+    container_name: mail-dev-ecom
+    image: maildev/maildev
     ports:
-      - 8088:8088
-    networks:
-      - spring-ecom
-    depends_on:
-      - postgres
+      - 1080:1080
+      - 1025:1025
 
 networks:
   spring-ecom:
