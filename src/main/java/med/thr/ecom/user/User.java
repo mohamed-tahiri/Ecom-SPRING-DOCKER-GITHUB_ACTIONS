@@ -2,6 +2,7 @@ package med.thr.ecom.user;
 
 import jakarta.persistence.*;
 import lombok.*;
+import med.thr.ecom.product.Product;
 import med.thr.ecom.role.Role;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -41,6 +42,9 @@ public class User implements UserDetails, Principal {
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
+
+    @OneToMany(mappedBy = "user")
+    private List<Product> products;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)

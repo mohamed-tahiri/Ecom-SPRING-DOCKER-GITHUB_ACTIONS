@@ -11,8 +11,6 @@ import med.thr.ecom.user.Token;
 import med.thr.ecom.user.TokenRepository;
 import med.thr.ecom.user.User;
 import med.thr.ecom.user.UserRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -30,8 +28,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AuthenticationService {
 
-
-    private static final Logger logger = LoggerFactory.getLogger(AuthenticationService.class);
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;

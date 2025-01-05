@@ -1,52 +1,37 @@
 package med.thr.ecom.product;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
+import med.thr.ecom.cart.CartItem;
+import med.thr.ecom.common.BaseEntity;
+import med.thr.ecom.feedback.Feedback;
+import med.thr.ecom.user.User;
+import java.util.List;
 
+@Getter
+@Setter
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-public class Product {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Product extends BaseEntity {
 
     private String name;
     private String description;
     private Double price;
+    private boolean activated;
+    private boolean shareable;
 
-    // Getters and Setters
-    public Long getId() {
-        return id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @OneToMany(mappedBy = "product")
+    private List<Feedback> feedbacks;
 
-    public String getName() {
-        return name;
-    }
+    @OneToMany(mappedBy = "product")
+    private List<CartItem> items;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
 }
